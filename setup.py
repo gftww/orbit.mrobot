@@ -20,8 +20,8 @@ INSTALL_REQUIRES = [
 setup(
     # TODO: Change your package naming
     # -----------------------------------------------------------------
-    name="orbit.ext_template",
-    packages=["orbit.ext_template"],
+    name="orbit.mrobot",
+    packages=["orbit.mrobot"],
     # -----------------------------------------------------------------
     author=EXTENSION_TOML_DATA["package"]["author"],
     maintainer=EXTENSION_TOML_DATA["package"]["maintainer"],

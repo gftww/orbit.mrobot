@@ -10,11 +10,11 @@ readme  = "README.md"
 # TODO: Change your package specifications
 # -----------------------------------------------------------------
 title = "Extension Template"
-author = "ORBIT Project Developers"
-maintainer = "Nico Burger"
-maintainer_email = "nburger@theaiinstitute.com"
-description="Extension Template for Orbit"
-repository = "https://github.com/isaac-orbit/orbit.ext_template.git"
+author = "Fangtai Guo"
+maintainer = "Fangtai Guo"
+maintainer_email = "guofangtai@zhejianglab.com"
+description="Extension Project of Multi robot for Orbit"
+repository = "https://github.com/gftww/orbit.mrobot.git"
 keywords = ["extension", "template", "orbit"]
 # -----------------------------------------------------------------
 
@@ -27,7 +27,7 @@ keywords = ["extension", "template", "orbit"]
 [[python.module]]
 # TODO: Change your package name
 # -----------------------------------------------------------------
-name = "orbit.ext_template"
+name = "orbit.mrobot"
 # -----------------------------------------------------------------
 
 [orbit_settings]

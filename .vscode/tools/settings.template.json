@@ -65,7 +65,7 @@
     "autoDocstring.docstringFormat": "google",
     "autoDocstring.guessTypes": true,
     // Python environment path
-    "python.defaultInterpreterPath": "${env:ORBIT_PATH}/_isaac_sim/python.sh",
+    "python.defaultInterpreterPath": "${ORBIT_PATH}/_isaac_sim/python.sh",
     "python.envFile": "${workspaceFolder}/.vscode/.python.env",
     // ROS distribution
     "ros.distro": "noetic",
