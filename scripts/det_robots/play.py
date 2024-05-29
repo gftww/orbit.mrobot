@@ -1,4 +1,4 @@
-# python scripts/rsl_rl/play.py --task Template-Velocity-Flat-Anymal-D-Play-v0 --num_envs 16
+# python scripts/det_robots/play.py --task Det-Velocity-Flat-Anymal-D-Play-v0 --num_envs 3
 """Script to play a checkpoint if an RL agent from RSL-RL."""
 
 """Launch Isaac Sim Simulator first."""
@@ -55,6 +55,7 @@ def main():
 
     # create isaac environment
     env = gym.make(args_cli.task, cfg=env_cfg)
+
     # wrap around environment for rsl-rl
     env = RslRlVecEnvWrapper(env)
 
@@ -78,8 +79,11 @@ def main():
     export_policy_as_onnx(ppo_runner.alg.actor_critic, export_model_dir, filename="policy.onnx")
 
     # reset environment
+    env.set_commands(name="base_velocity", env_ids= [0,1,2],vels=[[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0]])
     obs, _ = env.get_observations()
+    print("初始位置：",obs)
     # simulate environment
+    import time
     while simulation_app.is_running():
         # run everything in inference mode
         with torch.inference_mode():
@@ -87,6 +91,13 @@ def main():
             actions = policy(obs)
             # env stepping
             obs, _, _, _ = env.step(actions)
+            commands = env.get_commands("base_velocity")
+
+            current_time = time.localtime()
+            t =current_time.tm_sec
+            if t %20 ==0:
+                env.set_commands(name="base_velocity", env_ids= [0,1,2],vels=[[1,0,0.0],[1,0.0,0.0],[1.0,0.0,0.0]])
+            print("这些commands:",commands)
 
     # close the simulator
     env.close()
